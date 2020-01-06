@@ -1,0 +1,5 @@
+-
+  name: 'PZT'
+  size: 10
+  amount: 700
+  max_output_per_mm: 400
