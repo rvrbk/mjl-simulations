@@ -75,12 +75,11 @@ def create_result_table():
     d.query("""
         CREATE TABLE IF NOT EXISTS results (
             id integer PRIMARY KEY,
-            car_id integer NOT NULL,
-            tire_id integer NOT NULL,
-            piezo_id integer NOT NULL,
             setup_id integer NOT NULL,
             scenario_id integer NOT NULL,
-            output integer NOT NULL
+            min_output float NOT NULL,
+            max_output float NOT NULL,
+            created datetime NOT NULL
         );
     """)
 

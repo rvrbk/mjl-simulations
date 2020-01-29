@@ -15,7 +15,7 @@ piezos.append({ 'id': 1, 'name': 'DuraAct', 'weight': 20, 'width': 35, 'length':
 
 tires.append({ 'id': 1, 'name': '225/45 R17', 'section_width': 225, 'aspect_ratio': 45, 'wheel_diameter': 17, 'weight': 4000 })
 
-setups.append({ 'id': 1, 'name': 'Partial replacement', 'description': '', 'piezo_id': 1, 'tire_id': 1, 'amount_sidewall': 342, 'amount_base': 0 })
+setups.append({ 'id': 1, 'name': 'Partial replacement', 'description': '', 'piezo_id': 1, 'tire_id': 1, 'amount_sidewall': 34, 'amount_base': 0 })
 
 scenarios.append({ 'id': 1, 'car_id': 1, 'setup_id': 1, 'speed': 100, 'distance': 10000 })
 scenarios.append({ 'id': 2, 'car_id': 1, 'setup_id': 1, 'speed': 80, 'distance': 5000 })

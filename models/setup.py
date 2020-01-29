@@ -5,6 +5,7 @@ from models import tire
 class Setup:
     d = db.DB()
 
+    id = 0
     name = None
     description = None
     piezo = None
@@ -15,6 +16,7 @@ class Setup:
     def __init__(self, id):
         setup = self.d.one('SELECT * FROM setups WHERE id = {0}'.format(id))
         
+        self.id = setup[0]
         self.name = setup[1]
         self.description = setup[2]
         self.piezo = piezo.Piezo(setup[3])
