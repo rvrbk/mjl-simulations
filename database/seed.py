@@ -13,7 +13,7 @@ cars.append({ 'id': 2, 'name': 'Rivian R1T', 'weight': 1800 })
 
 piezos.append({ 'id': 1, 'name': 'DuraAct', 'weight': 20, 'width': 35, 'length': 61, 'height': 1, 'min_output': 10, 'max_output': 1000 })
 
-tires.append({ 'id': 1, 'name': '225/45 R17', 'section_width': 225, 'aspect_ratio': 45, 'wheel_diameter': 17, 'weight': 4000 })
+tires.append({ 'id': 1, 'name': '225/45 R17', 'section_width': 225, 'aspect_ratio': 0.45, 'wheel_diameter': 17, 'weight': 4000 })
 
 setups.append({ 'id': 1, 'name': 'Partial replacement', 'description': '', 'piezo_id': 1, 'tire_id': 1, 'amount_sidewall': 34, 'amount_base': 0 })
 

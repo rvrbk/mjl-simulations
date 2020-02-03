@@ -1,3 +1,5 @@
+#https://www.tirerack.com/tires/tiretech/techpage.jsp?techid=7
+
 from database import db
 
 class Tire:

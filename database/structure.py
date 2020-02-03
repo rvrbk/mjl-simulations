@@ -35,7 +35,7 @@ def create_tire_table():
             id integer PRIMARY KEY,
             name varchar(255) NOT NULL,
             section_width integer NOT NULL,
-            aspect_ratio integer NOT NULL,
+            aspect_ratio float NOT NULL,
             wheel_diameter integer,
             weight integer NOT NULL
         );

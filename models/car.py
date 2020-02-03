@@ -14,15 +14,23 @@ class Car:
         self.weight = car[2]
 
     def drive(self, scenario):
-        units_under_pressure_per_spin = int((scenario.setup.amount_sidewall + scenario.setup.amount_base) * 4)
-        
-        min_units_output_per_spin = units_under_pressure_per_spin * scenario.setup.piezo.min_output
-        max_units_output_per_spin = units_under_pressure_per_spin * scenario.setup.piezo.max_output
-        
-        meters_per_spin =  3.14 * (scenario.setup.tire.diameter * 100)
-        spins_per_km = 4 * (1000 / (meters_per_spin / 1))
+        units = int(scenario.setup.amount_sidewall + scenario.setup.amount_base)
 
-        min_output = (spins_per_km * int(scenario.distance) * min_units_output_per_spin)
-        max_output = (spins_per_km * int(scenario.distance) * max_units_output_per_spin)
+        amp = ((scenario.setup.piezo.width + scenario.setup.piezo.length) / 2) * 0.1
 
-        self.d.query('INSERT INTO results(setup_id, scenario_id, min_output, max_output, created) VALUES(\'{0}\', \'{1}\', \'{2}\', \'{3}\', \'{4}\')'.format(scenario.setup.id, scenario.id, min_output, max_output, datetime.datetime.now()))
+        min_units_output_per_spin = units * scenario.setup.piezo.min_output
+        max_units_output_per_spin = units * scenario.setup.piezo.max_output
+
+        meters_per_spin =  3.14 * (scenario.setup.tire.diameter / 1000)
+        spins_per_m = 1 / meters_per_spin
+        spins_per_km = (1000 * spins_per_m)
+
+        min_output_kw = ((spins_per_km * (scenario.distance / 1000) * min_units_output_per_spin) * amp) / 1000
+        max_output_kw = ((spins_per_km * (scenario.distance / 1000) * max_units_output_per_spin) * amp) / 1000
+
+        min_output_kwh = min_output_kw * (scenario.distance / scenario.speed)
+        max_output_kwh = max_output_kw * (scenario.distance / scenario.speed)
+
+        print('units: {0}, min_units_output_per_spin: {1}, max_units_output_per_spin: {2}, meters_per_spin: {3}, spins_per_km: {4}, min_output: {5}, max_output: {6}'.format(units, min_units_output_per_spin, max_units_output_per_spin, meters_per_spin, spins_per_km, min_output_kw, max_output_kw))
+
+        #self.d.query('INSERT INTO results(setup_id, scenario_id, min_output, max_output, created) VALUES(\'{0}\', \'{1}\', \'{2}\', \'{3}\', \'{4}\')'.format(scenario.setup.id, scenario.id, min_output_kw, max_output_kw, datetime.datetime.now()))
